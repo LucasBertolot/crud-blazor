@@ -2,6 +2,7 @@ using GameStore.Client.Models;
 
 namespace GameStore.Client;
 
+
 public static class GameClient
 {
         private static readonly List<Game> games = new() 
