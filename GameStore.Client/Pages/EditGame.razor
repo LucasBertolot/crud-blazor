@@ -1,0 +1,38 @@
+﻿@page "/game"
+@using Models
+
+<PageTitle>Novo Jogo</PageTitle>
+<h1>Catálogo de Jogos</h1>
+<h3>EditGame</h3>
+
+<div class="row">
+    <div class="col-sm-4">
+        <EditForm Model="@game">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <InputText id="nome" @bind-Value="game.Nome" class="form-control"></InputText>
+            </div>
+            <div class="mb-3">
+                <label for="gênero" class="form-label">Gênero:</label>
+                <InputText id="Gênero" @bind-Value="game.Gênero" class="form-control"></InputText>
+            </div>
+            <div class="mb-3">
+                <label for="preço" class="form-label">Preço:</label>
+                <InputNumber id="Preço" @bind-Value="game.Preço" class="form-control"></InputNumber>
+            </div>
+            <div class="mb-3">
+                <label for="lançamento" class="form-label">Lançamento:</label>
+                <InputDate id="Lançamento" @bind-Value="game.Lançamento" class="form-control"></InputDate>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private Game game = new()
+        {
+            Nome = string.Empty,
+            Gênero = string.Empty,
+            Lançamento = DateTime.UtcNow
+        };
+}

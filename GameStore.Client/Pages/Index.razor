@@ -1,0 +1,54 @@
+﻿@page "/"
+@using Models
+
+<PageTitle>Catologo de Jogos</PageTitle>
+
+<h1>Catálogo de Jogos</h1>
+
+@if (games is null)
+{
+
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped table-bordered table-hover">
+        <thead clas="table-dark">
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Gênero</th>
+            <th>Preço</th>
+            <th>Lançamento</th>
+            <th></th>
+        </thead>
+        <tbody>
+            @foreach (var game in games)
+            {
+                <tr>
+                    <td>@game.Id</td>
+                    <td>@game.Nome</td>
+                    <td>@game.Gênero</td>
+                    <td>@game.Preço</td>
+                    <td>@game.Lançamento.ToString("MM/dd/yyyy")</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+}
+
+
+@code
+{
+    private Game[]? games;
+
+        protected override void OnInitialized()
+        {
+            games = GameClient.GetGames();
+        }
+        
+}
+
+
+
